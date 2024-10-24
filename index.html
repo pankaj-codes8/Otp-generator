@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <h2> OTP Generater in javascript </h2>
+
+    <form action="" class="form" onsubmit="check(event)">
+
+      <button id="GenerateOtp" type="button" onclick="otpGenerat()">OTP Generate</button>
+
+      <div class="inner">
+        <label for="">Plesse Enter Valid OTP</label>
+        <input type="text" maxlength="6" minlength="6" id="enterOtp" pattern="[0-9]{6}" required onkeyup="check(null)">
+      </div>
+
+      <input type="submit" id="submit_otp">
+
+    </form>
+
+  </div
+    <script>
+      let generateOtp = document.getElementById("GenerateOtp");
+        let enterOtp = document.getElementById("enterOtp");
+        let submit_otp = document.getElementById("form");
+
+        function check(event) {
+            let genOtp = generateOtp.innerText;
+            let otp = enterOtp.value;
+
+            if (genOtp != otp) {
+                if (event != null) {
+                    enterOtp.setCustomValidity("Check OTP");
+                    event.preventDefault();
+                } else {
+                    enterOtp.setCustomValidity("");
+                }
+            }
+        };
+
+        function otpGenerat() {
+            let otp = "";
+
+            for (let i = 0; i < 6; i++) {
+                otp += Math.floor(Math.random() * 10);
+            }
+            generateOtp.style.color = "red";
+            generateOtp.innerHTML = otp;
+        };
+    </script>
+</body>
+</html>
+    
